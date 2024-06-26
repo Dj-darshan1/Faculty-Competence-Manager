@@ -84,6 +84,19 @@ export default class Data {
   }
 
   /**
+   * Get all available papers
+   * @returns API response if successful
+   */
+  async getPapers() {
+    const response = await this.api('/papers', 'GET', null, false);
+    if (response.status === 200) {
+      return response.json().then(data => data);
+    } else {
+      throw new Error();
+    }
+  }
+
+  /**
    * Get a specific course by id
    * @param {String} id - Course ID
    * @returns API response if successful
@@ -97,6 +110,21 @@ export default class Data {
     }
   }
 
+   /**
+   * Get a specific paper by id
+   * @param {String} id - Course ID
+   * @returns API response if successful
+   */
+   async getPaper(id) {
+    const response = await this.api(`/papers/${id}`, 'GET', null, false);
+    if (response.status === 200) {
+      return response.json().then(data => data);
+    } else {
+      console.log("hi")
+      throw new Error();
+    }
+  }
+
   /**
    * Create a new course
    * @param {Object} course - with title, description, estimated time and materials needed
@@ -106,6 +134,28 @@ export default class Data {
    */
   async createCourse(course, username, password) {
     const response = await this.api('/courses', 'POST', course, true, { username, password });
+    if (response.status === 201) {
+      return [];
+    }
+    else if (response.status === 400) {
+      return response.json().then(data => {
+        return data.errors;
+      });
+    }
+    else {
+      throw new Error();
+    }
+  }
+
+  /**
+   * Create a new paper
+   * @param {Object} paper - with title, description, authors, conference, date
+   * @param {String} username - user's email address
+   * @param {String} password 
+   * @returns empty response if successful
+   */
+  async createPaper(paper, username, password) {
+    const response = await this.api('/papers', 'POST', paper, true, { username, password });
     if (response.status === 201) {
       return [];
     }
@@ -143,6 +193,27 @@ export default class Data {
   }
 
   /**
+   * Delete a specific course
+   * Only users who are authors of the course are authorised to delete the course
+   * @param {String} id - Course ID
+   * @param {String} username - user's email address
+   * @param {String} password 
+   * @returns empty response if successful
+   */
+  async deletePaper(id, username, password) {
+    const response = await this.api(`/papers/${id}`, 'DELETE', null, true, { username, password });
+    if (response.status === 204) {
+      return [];
+    } else if (response.status === 400) {
+      return response.json().then(data => {
+        return data.errors;
+      });
+    } else {
+      throw new Error();
+    }
+  }
+
+  /**
    * Update a particular course
    * @param {String} id - Course ID
    * @param {Object} course - with updated title, description, estimated time and materials needed
@@ -164,4 +235,25 @@ export default class Data {
       throw new Error();
     }
   }
+
+  /**
+   /**
+ * Update a specific paper
+ * @param {String} id - Paper ID
+ * @param {Object} paper - The paper object with updated details
+ * @param {String} username - User's email address
+ * @param {String} password - User's password
+ * @returns empty response if successful
+ */
+async updatePaper(id, paper, username, password) {
+  const response = await this.api(`/papers/${id}`, 'PUT', paper, true, { username, password });
+  if (response.status === 204) {
+    return [];
+  } else if (response.status === 400) {
+    return response.json().then(data => data.errors);
+  } else {
+    throw new Error();
+  }
+}
+  
 }

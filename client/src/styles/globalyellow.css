@@ -23,13 +23,13 @@ p {
     hyphens: auto;
 }
 a {
-    color: #4b2e83; /* Deep purple base color */
+    color: #007a7a; /* Dark teal base color */
     text-decoration: none;
     transition: color 0.3s ease, box-shadow 0.3s ease;
 }
 a:hover {
-    color: #ffffff; /* Brighter purple on hover */
-    box-shadow: 0 0 15px rgba(108, 67, 177, 0.4); /* Glow effect on hover */
+    color: #00b3b3; /* Brighter teal on hover */
+    box-shadow: 0 0 15px rgba(0, 123, 123, 0.4); /* Glow effect on hover */
 }
 .wrap {
     max-width: 1250px;
@@ -37,7 +37,7 @@ a:hover {
     padding: 0 1rem;
 }
 header {
-    background: #8fd9a8; /* Mint green base color */
+    background: #ffc800; /* Gold base color */
     color: #333;
     padding: 1rem 0;
     margin-bottom: 2rem;
@@ -55,12 +55,12 @@ header li {
     font-size: .8rem;
 }
 header nav a {
-    color: #333333; /* Lighter mint green */
+    color: #000000; /* Lighter gold */
     transition: color 0.3s ease, box-shadow 0.3s ease;
 }
 header nav a:hover {
-    color: #07843b; /* Brighter mint green on hover */
-    box-shadow: 0 0 15px rgba(124, 211, 162, 0.4); /* Glow effect on hover */
+    color: #ffd700; /* Brighter gold on hover */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); /* Glow effect on hover */
 }
 .header--signedin li {
     text-align: right;
@@ -71,7 +71,7 @@ header nav a:hover {
     margin-left: .5rem;
 }
 .course--module {
-    background: #4b2e83; /* Deep purple base color */
+    background: #007a7a; /* Dark teal base color */
     border-radius: .5rem;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
@@ -80,8 +80,8 @@ header nav a:hover {
 }
 .course--module:hover {
     transform: translateY(-3px);
-    box-shadow: 0 4px 6px rgba(75, 46, 131, 0.1), 0 0 15px rgba(75, 46, 131, 0.4); /* Shadow and glow on hover */
-    background-color: #6c43b1; /* Brighter purple on hover */
+    box-shadow: 0 4px 6px rgba(0, 123, 123, 0.1), 0 0 15px rgba(0, 123, 123, 0.4); /* Shadow and glow on hover */
+    background-color: #00b3b3; /* Brighter teal on hover */
 }
 .course--label {
     color: #fff;
@@ -95,16 +95,16 @@ header nav a:hover {
     font-size: 1.25rem;
 }
 .course--add--module {
-    background: #8fd9a8; /* Mint green base color */
+    background: #ffdf80; /* Gold base color */
     color: #333;
     font-weight: 300;
     font-size: 1.25rem;
     transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 .course--add--module:hover {
-    background-color: #7cd3a2; /* Brighter mint green on hover */
+    background-color: #ffd700; /* Brighter gold on hover */
     color: #333; /* Maintain dark text color */
-    box-shadow: 0 0 15px rgba(124, 211, 162, 0.4); /* Glow effect on hover */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); /* Glow effect on hover */
 }
 .course--add--title .add {
     width: 20px;
@@ -114,10 +114,10 @@ header nav a:hover {
 }
 .course--detail--title {
     padding-bottom: .25rem;
-    border-bottom: 1px solid #4b2e83; /* Deep purple base color */
+    border-bottom: 1px solid #007a7a; /* Dark teal base color */
     margin: 3rem 0 .5rem;
     font-size: .9rem;
-    color: #4b2e83; /* Deep purple base color */
+    color: #007a7a; /* Dark teal base color */
     text-transform: uppercase;
     letter-spacing: 2px;
 }
@@ -125,7 +125,7 @@ header nav a:hover {
     font-size: 2rem;
     margin-bottom: .5rem;
     font-weight: 700;
-    color: #4b2e83; /* Deep purple base color */
+    color: #007a7a; /* Dark teal base color */
 }
 .course--detail--list {
     font-weight: 300;
@@ -133,12 +133,12 @@ header nav a:hover {
     line-height: 1.5;
 }
 .actions--bar {
-    background: #8fd9a8; /* Mint green base color */
+    background: #ffdf80; /* Gold base color */
     padding: 1rem 0;
     margin: -2rem 0 2rem;
 }
 .validation--errors {
-    background: #8fd9a8; /* Mint green base color */
+    background: #ffdf80; /* Gold base color */
     padding: 1rem;
     border-radius: .5rem;
     margin-bottom: 2.5rem;
@@ -190,7 +190,7 @@ textarea {
     min-height: 300px;
 }
 .button {
-    background: #4b2e83; /* Deep purple base color */
+    background: #007a7a; /* Dark teal base color */
     color: #fff;
     font-size: 1rem;
     padding: .75rem 1.5rem;
@@ -208,19 +208,19 @@ textarea {
     margin-bottom: 0;
 }
 .button:not(.button-secondary):hover {
-    background: #3a1e6d; /* Slightly darker purple on hover */
+    background: #005c5c; /* Slightly darker teal on hover */
     cursor: pointer;
-    box-shadow: 0 0 15px rgba(58, 30, 109, 0.4); /* Glow effect on hover */
+    box-shadow: 0 0 15px rgba(0, 123, 123, 0.4); /* Glow effect on hover */
 }
 .button-secondary {
-    color: #8fd9a8; /* Mint green base color */
+    color: #ffdf80; /* Gold base color */
     background: none;
-    box-shadow: 0 0 0 2px #8fd9a8 inset; /* Mint green border */
+    box-shadow: 0 0 0 2px #ffdf80 inset; /* Gold border */
     transition: box-shadow 0.2s, color 0.2s, background 0.3s ease;
 }
 .button-secondary:hover {
-    color: #7cd3a2; /* Brighter mint green on hover */
-    box-shadow: 0 0 0 2px #7cd3a2 inset; /* Brighter mint green glow on hover */
+    color: #ffd700; /* Brighter gold on hover */
+    box-shadow: 0 0 0 2px #ffd700 inset; /* Brighter gold glow on hover */
     cursor: pointer;
 }
 input:focus, button:focus, .button:focus, textarea:focus, a:focus {

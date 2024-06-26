@@ -79,6 +79,11 @@ module.exports = (sequelize) => {
         fieldName: 'userId'
       }
     });
+    User.hasMany(models.Paper, {
+      foreignKey: {
+        fieldName: 'userId'
+      }
+    });
   }
 
   return User;

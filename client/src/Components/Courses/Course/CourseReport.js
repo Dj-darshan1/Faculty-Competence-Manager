@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import Context from '../../Context';
-import Loading from '../Loading';
+import Context from '../../../Context';
+import Loading from '../../Loading';
 
-const CourseDetail = () => {
+const CourseReport = () => {
   const context = useContext(Context.Context);
   let courseDetail = useState('');
   const [course, setCourseDetail] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const authUser = context.authenticatedUser;
+  // const authUser = context.authenticatedUser;
 
   const { id } = useParams();
   let navigate = useNavigate();
@@ -39,7 +39,6 @@ const CourseDetail = () => {
 
   if (course.id) {
     courseDetail = <div className="wrap">
-      <h2>Course Detail</h2>
       <div className="main--flex">
         <div>
           <h3 className="course--detail--title">Course</h3>
@@ -63,22 +62,22 @@ const CourseDetail = () => {
     </div>
   }
 
-  const handleDelete = (event) => {
-    event.preventDefault();
-    context.data.deleteCourse(id, authUser.emailAddress, authUser.password)
-      .then((response) => {
-        // If course deletion is successful, then there should be no response returned
-        if (response.length) {
-          navigate('/error');
-        } else {
-          navigate('/');
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        navigate('/error');
-      });
-  }
+  // const handleDelete = (event) => {
+  //   event.preventDefault();
+  //   context.data.deleteCourse(id, authUser.emailAddress, authUser.password)
+  //     .then((response) => {
+  //       // If course deletion is successful, then there should be no response returned
+  //       if (response.length) {
+  //         navigate('/error');
+  //       } else {
+  //         navigate('/');
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //       navigate('/error');
+  //     });
+  // }
 
   return (
     isLoading ?
@@ -86,7 +85,7 @@ const CourseDetail = () => {
       : course ? <div>
         <div className="actions--bar">
           <div className="wrap">
-            {authUser && (authUser.id === course.User.id) ?
+            {/* {authUser && (authUser.id === course.User.id) ?
               <Link to={`/courses/${id}/update`} className="button">Update Course</Link>
               : null
             }
@@ -94,7 +93,8 @@ const CourseDetail = () => {
               <button className="button" onClick={handleDelete}>Delete Course</button>
               : null
             }
-            <Link to='/' className="button button-secondary">Return to List</Link>
+            <Link to={`/courses/${id}/report`} className="button">Print Course</Link>
+            <Link to='/' className="button button-secondary">Return to List</Link> */}
           </div>
         </div>
         {courseDetail}
@@ -103,4 +103,4 @@ const CourseDetail = () => {
   )
 }
 
-export default CourseDetail;
+export default CourseReport;

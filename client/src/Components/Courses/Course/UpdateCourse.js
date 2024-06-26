@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import Context from '../../Context';
-import Loading from '../Loading';
+import Context from '../../../Context';
+import Loading from '../../Loading';
 
 const UpdateCourse = () => {
   const context = useContext(Context.Context);

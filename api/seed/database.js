@@ -6,6 +6,7 @@ const Context = require('./context');
 class Database {
   constructor(seedData, enableLogging) {
     this.courses = seedData.courses;
+    this.papers = seedData.papers;
     this.users = seedData.users;
     this.enableLogging = enableLogging;
     this.context = new Context('fsjstd-restapi.db', enableLogging);
@@ -59,6 +60,22 @@ class Database {
       course.materialsNeeded);
   }
 
+  createPaper(paper) {
+    return this.context
+      .execute(`
+        INSERT INTO Papers
+          (userId, title, description, authors, conference, date, createdAt, updatedAt)
+        VALUES
+          (?, ?, ?, ?, ?, ?, datetime('now'), datetime('now'));
+      `,
+      paper.userId,
+      paper.title,
+      paper.description,
+      paper.authors,
+      paper.conference,
+      paper.date);
+  }
+
   async hashUserPasswords(users) {
     const usersWithHashedPasswords = [];
 
@@ -79,6 +96,12 @@ class Database {
   async createCourses(courses) {
     for (const course of courses) {
       await this.createCourse(course);
+    }
+  }
+
+  async createPapers(papers) {
+    for (const paper of papers) {
+      await this.createPaper(paper);
     }
   }
 
@@ -144,6 +167,39 @@ class Database {
     this.log('Creating the course records...');
 
     await this.createCourses(this.courses);
+    
+    //kxjehn
+
+    const paperTableExists = await this.tableExists('Papers');
+
+    if (paperTableExists) {
+      this.log('Dropping the Papers table...');
+
+      await this.context.execute(`
+        DROP TABLE IF EXISTS Papers;
+      `);
+    }
+
+    this.log('Creating the Papers table...');
+
+    await this.context.execute(`
+      CREATE TABLE Papers (
+        id INTEGER PRIMARY KEY AUTOINCREMENT, 
+        title VARCHAR(255) NOT NULL DEFAULT '', 
+        description TEXT NOT NULL DEFAULT '', 
+        authors VARCHAR(255), 
+        conference VARCHAR(255),
+        date DATETIME,
+        createdAt DATETIME NOT NULL, 
+        updatedAt DATETIME NOT NULL, 
+        userId INTEGER NOT NULL DEFAULT -1 
+          REFERENCES Users (id) ON DELETE CASCADE ON UPDATE CASCADE
+      );
+    `);
+
+    this.log('Creating the paper records...');
+
+    await this.createPapers(this.papers);
 
     this.log('Database successfully initialized!');
   }
