@@ -5,8 +5,8 @@ This project is a Full Stack React application utilising the [School Database RE
 - sign in
 - view courses
 - create a course (if signed in)
-- update their own courses (if authorised)
-- delete their own courses (if authorised)
+- update their own courses and papers (if authorised)
+- delete their own courses and papers (if authorised)
 
 This app was implemented according to the designs specified in the `/mockups` and `/markup` folder.
 
